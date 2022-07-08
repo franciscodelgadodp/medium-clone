@@ -4,4 +4,4 @@ Using NextJS, TailwindCSS and Sanity following tutorial
 
 # View Deployment
 
-Link here:
+Link here: https://medium-clone-murex.vercel.app/
