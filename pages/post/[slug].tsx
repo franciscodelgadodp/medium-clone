@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import Header from "../../components/Header";
 import { Post } from "../../typings";
+import Comment from "../../components/Comment";
 
 interface IFormInput {
   _id: string;
@@ -26,7 +27,6 @@ function Post({ post }: Props) {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
-  console.log(post);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
@@ -35,7 +35,6 @@ function Post({ post }: Props) {
       body: JSON.stringify(data),
     })
       .then(() => {
-        console.log(data);
         setSubmitted(true);
       })
       .catch((error) => {
@@ -182,12 +181,7 @@ function Post({ post }: Props) {
         <hr className="pb-2" />
 
         {post.comments.map((comment) => (
-          <div key={comment._id}>
-            <p>
-              <span className="text-yellow-500">{comment.name}: </span>{" "}
-              {comment.comment}
-            </p>
-          </div>
+          <Comment comment={comment} />
         ))}
       </div>
     </main>
